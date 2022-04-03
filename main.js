@@ -34,23 +34,115 @@ const printBoard = () => {
 
 const horizontalWin = () => {
   // Your code here to check for horizontal wins
-}
+  if(
+  (board[0][0]==='X' && board[0][1]==='X' && board[0][2]==='X')||
+  (board[0][0]==='O' && board[0][1]==='O' && board[0][2]==='O')
+  ){
+    //code for row 0 win
+    console.log('row 0 win');
+    return true;
+  }else if(
+  (board[1][0]==='X' && board[1][1]==='X' && board[1][2]==='X')||
+  (board[1][0]==='O' && board[1][1]==='O' && board[1][2]==='O')
+  ){
+    //code for row 1 win
+    console.log('row 1 win');
+    return true;
+  }else if(
+  (board[2][0]==='X' && board[2][1]==='X' && board[2][2]==='X')||
+  (board[2][0]==='O' && board[2][1]==='O' && board[2][2]==='O')
+  ){
+    //code for row 2 win
+    console.log('row 2 win');
+    return true;
+  }else{
+    //code for no horizontal win
+    return false;
+  }
+};
 
 const verticalWin = () => {
   // Your code here to check for vertical wins
-}
+  if(
+  (board[0][0]==='X' && board[1][0]==='X' && board[2][0]==='X')||
+  (board[0][0]==='O' && board[1][0]==='O' && board[2][0]==='O')
+  ){
+    //code for col 0 win
+    console.log('col 0 win');
+    return true;
+  }else if(
+  (board[0][1]==='X' && board[1][1]==='X' && board[2][1]==='X')||
+  (board[0][1]==='O' && board[1][1]==='O' && board[2][1]==='O')
+  ){
+    //code for row 1 win
+    console.log('col 1 win');
+    return true;
+  }else if(
+  (board[0][2]==='X' && board[1][2]==='X' && board[2][2]==='X')||
+  (board[0][2]==='O' && board[1][2]==='O' && board[2][2]==='O')
+  ){
+    //code for row 2 win
+    console.log('col 2 win');
+    return true;
+  }else{
+    //code for no horizontal win
+    return false;
+  }
+};
 
 const diagonalWin = () => {
   // Your code here to check for diagonal wins
-}
+  if(
+    (board[0][0]==='X' && board[1][1]==='X' && board[2][2]==='X')||
+    (board[0][0]==='O' && board[1][1]==='O' && board[2][2]==='O')
+  ){
+    //code for diag left win
+    console.log('diagonal left win');
+    return true;
+  }else if(
+    (board[0][2]==='X' && board[1][1]==='X' && board[2][0]==='X')||
+    (board[0][2]==='O' && board[1][1]==='O' && board[2][0]==='O')
+  ){
+    // code for diag right win
+    console.log('diagonal right win');
+    return true;
+  }else{
+    // code for no diagonal win
+    return false;
+  }
+};
 
 const checkForWin = () => {
   // Your code here call each of the check for types of wins
-}
+  if(horizontalWin()){ // check for win, if true alert winner
+    console.log(playerTurn + ' wins horizontally');
+    return true;
+  }else if(verticalWin()){//check for win, if true alert winner
+    console.log(playerTurn + ' wins vertically');
+    return true;
+  }else if(diagonalWin()){//check for win, if true alert winner
+    console.log(playerTurn + ' wins diagonally');
+    return true;
+  }else{
+    return false;
+  }
+  
+  // horizontalWin();
+  // verticalWin();
+  // diagonalWin();
+};
 
 const ticTacToe = (row, column) => {
   // Your code here to place a marker on the board
+  board[row][column] = playerTurn;
+  
   // then check for a win
+  checkForWin();
+  
+  if (playerTurn === 'X'){
+    playerTurn = 'O'
+  }else{ playerTurn = 'X'
+};
 }
 
 const getPrompt = () => {
